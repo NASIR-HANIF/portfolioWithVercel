@@ -8,7 +8,7 @@ app.use(express.urlencoded({extended : true,limit:"50mb"}))
 import { userRouter } from "./routes/User.js";
 app.use("/api/v1",userRouter);
 
-const allowedDomains = ['https://example.com', 'https://anotherdomain.com'];
+const allowedDomains = ['*', 'https://nasirhanif.online', 'http://localhost:3000'];
 
 const corsOptions = {
   origin: function (origin, callback) {

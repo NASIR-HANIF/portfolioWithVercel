@@ -10,22 +10,28 @@ app.use("/api/v1",userRouter);
 
 const allowedDomains = ['http://nasirhanif.online', 'http://localhost:3000', "https://portfolio-with-vercel-server.vercel.app"];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedDomains.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204 // kuch purane browsers 204 status pe choke karte hain
-};
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+
+  if (allowedDomains.indexOf(origin) !== -1) {
+    // Set the Access-Control-Allow-Origin header for allowed origins
+    res.setHeader('Access-Control-Allow-Origin', origin);
+
+    // Set other CORS headers
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  }
+
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204); // No Content
+  }
+
+  next();
+});
 
 
-// Use CORS middleware
-app.use(cors(corsOptions));
 
 // Sample route
 app.get('/', (req, res) => {

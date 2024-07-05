@@ -14,7 +14,8 @@ import { getUser, loadUser } from './actions/user';
 import TimeLine from './components/Admin/Timeline';
 import Youtube from './components/Admin/Youtube';
 import Project from './components/Admin/Project';
-import Loader from "./components/Loader/Loader"
+import Loader from "./components/Loader/Loader";
+import NotFound from './components/NotFound/NotFound';
 
 
 
@@ -40,16 +41,16 @@ function App() {
             <Route path='/'
               element={
                 <Home
-                  youtubes={user.youtube}
-                  timelines={user.timeline}
-                  skills={user.skills} />}
+                  youtubes={user?.youtube}
+                  timelines={user?.timeline}
+                  skills={user?.skills} />}
             />
             <Route
              path='/about'
-              element={<About about={user.about} />} />
+              element={<About about={user?.about} />} />
             <Route
              path='/projects'
-              element={<Projects projects={user.projects} />} />
+              element={<Projects projects={user?.projects} />} />
             <Route
              path='/contact'
               element={<Contact />} />
@@ -65,6 +66,9 @@ function App() {
             <Route
              path='/admin/project'
               element={isAuthenticated ? <Project /> : <Login />} />
+
+                <Route path='*'
+                  element={<NotFound />} />
           </Routes>
           <Footer />
         </>

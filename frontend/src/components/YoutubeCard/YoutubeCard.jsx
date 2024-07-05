@@ -17,9 +17,9 @@ const YoutubeCard = ({
   const dispatch = useDispatch();
 
   const deleteHandler = async (id) => {
-   await dispatch(deleteYoutube(id))
+    await dispatch(deleteYoutube(id))
     dispatch(getUser())
-}
+  }
 
   return (
     <div className='youtubeCard'>
@@ -29,11 +29,11 @@ const YoutubeCard = ({
       </a>
       {
         isAdmin && (
-        <Button 
-        onClick={()=>deleteHandler(id)}
-        style={{display:"block",margin : "auto", color : "rgba(40,40,40,0.7)"}} >
-          <FaTrash />
-        </Button>)
+          <Button
+            onClick={() => deleteHandler(id)}
+            style={{ display: "block", margin: "auto", color: "rgba(40,40,40,0.7)" }} >
+            <FaTrash />
+          </Button>)
       }
     </div>
   )

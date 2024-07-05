@@ -8,7 +8,7 @@ app.use(express.urlencoded({extended : true,limit:"50mb"}))
 import { userRouter } from "./routes/User.js";
 app.use("/api/v1",userRouter);
 
-const allowedDomains = ['*', 'http://nasirhanif.online', 'http://localhost:3000', "https://portfolio-with-vercel-server.vercel.app"];
+const allowedDomains = ['http://nasirhanif.online', 'http://localhost:3000', "https://portfolio-with-vercel-server.vercel.app"];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -20,6 +20,7 @@ const corsOptions = {
   },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
+  optionsSuccessStatus: 204 // kuch purane browsers 204 status pe choke karte hain
 };
 
 

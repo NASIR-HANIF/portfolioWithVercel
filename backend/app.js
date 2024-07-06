@@ -19,21 +19,14 @@ const allowedDomains = [
   
 ];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedDomains.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: 'GET, POST, PUT, DELETE, OPTIONS',
-  credentials: true,
-  optionsSuccessStatus: 204 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+// Allow all origins
+app.use(cors());
 
-// Use CORS middleware
-app.use(cors(corsOptions));
+// Allow specific origin(s)
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
+
 
 app.use("/api/v1",userRouter);
 

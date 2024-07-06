@@ -21,7 +21,7 @@ export const login = async (req, res) => {
             expires: new Date(Date.now() + 6000000),
             httpOnly: true,
              sameSite: 'None',
-            // secure:true  // ager http ho raha hey to secure remove kerna hey or ager https use ho raha hey to secure : true kerna hey
+             secure:true  // ager http ho raha hey to secure remove kerna hey or ager https use ho raha hey to secure : true kerna hey
             // secure: process.env.NODE_ENV === 'production'
         }).json({
             success: true,

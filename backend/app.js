@@ -10,7 +10,7 @@ import { userRouter } from "./routes/User.js";
 
 // Allow all origins
 app.use(cors({
-    origin: "http://localhost:3000", // Replace with your client domain
+    origin: "https://portfoliofrontent.vercel.app", // Replace with your client domain
     credentials: true // Allow credentials (cookies) to be sent
 }));
 

@@ -7,7 +7,7 @@ app.use(express.json({limit : "50mb"}))
 app.use(express.urlencoded({extended : true,limit:"50mb"}))
 import { userRouter } from "./routes/User.js";
 
-
+/*
 
 const allowedOrigins = [
     'https://www.nasirhanif.online',
@@ -26,7 +26,7 @@ const allowedOrigins = [
     },
   };
 
-
+*/
 // Allow all origins
 <<<<<<< HEAD
 app.use(cors(corsOptions));

@@ -26,16 +26,16 @@ const allowedOrigins = [
     },
   };
 
+  
+
 */
 // Allow all origins
-<<<<<<< HEAD
-app.use(cors(corsOptions));
-=======
+// app.use(cors(corsOptions));
 app.use(cors({
-    origin: "https://www.nasirhanif.online", // Replace with your client domain
-    credentials: true // Allow credentials (cookies) to be sent
+    origin: "https://www.nasirhanif.online", 
+    credentials: true 
 }));
->>>>>>> 6b7a8e80ebbe2745f3499ae0bf34fe07bcc122ce
+
 
 
 

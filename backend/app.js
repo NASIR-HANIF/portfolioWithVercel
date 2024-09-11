@@ -8,11 +8,27 @@ app.use(express.urlencoded({extended : true,limit:"50mb"}))
 import { userRouter } from "./routes/User.js";
 
 
+
+const allowedOrigins = [
+    'https://www.nasirhanif.online',
+    'http://localhost:3000'
+  ];
+  
+  // Function to check if the origin is allowed
+  const corsOptions = {
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  };
+
+
 // Allow all origins
-app.use(cors({
-    origin: "https://portfoliofrontent.vercel.app", // Replace with your client domain
-    credentials: true // Allow credentials (cookies) to be sent
-}));
+app.use(cors(corsOptions));
 
 
 

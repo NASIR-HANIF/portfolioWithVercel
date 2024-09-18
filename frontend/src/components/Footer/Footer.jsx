@@ -29,7 +29,7 @@ const Footer = () => {
                 <a href="https://www.instagram.com/nasirhanif127sb" target="blank">
                     <BsInstagram />
                 </a>
-                <a href="https://www.linkedin.com/in/nasir-hanif-dev/" target="blank">
+                <a href="https://www.linkedin.com/in/nasir-hanif-web-developer/" target="blank">
                     <BsLinkedin />
                 </a>
 

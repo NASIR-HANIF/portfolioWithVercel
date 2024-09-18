@@ -1,19 +1,19 @@
 import React from 'react';
-import Timeline from "@mui/lab/Timeline"
-import TimelineItem from "@mui/lab/TimelineItem"
+import Timeline from "@mui/lab/Timeline";
+import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector"
-import TimelineContent from "@mui/lab/TimelineContent"
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent"
-import TimelineDot from "@mui/lab/TimelineDot"
-import { Event } from "@mui/icons-material"
+import TimelineConnector from "@mui/lab/TimelineConnector";
+import TimelineContent from "@mui/lab/TimelineContent";
+import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
+import TimelineDot from "@mui/lab/TimelineDot";
+import { Event } from "@mui/icons-material";
 import Typography from '@mui/material/Typography';
 
 const TimeLine = ({ timelines = [] }) => {
   return (
     <div>
-      <Timeline position='alternate' >
-        {
+      <Timeline position='alternate'>
+        {timelines.length > 0 ? (
           timelines.map((item, index) => (
             <TimelineItem key={index}>
               <TimelineOppositeContent
@@ -22,7 +22,8 @@ const TimeLine = ({ timelines = [] }) => {
                 variant='body2'
                 color="text.secondary"
               >
-               {item.date.toString().split("T")[0]}
+                {/* Handle null dates with proper check */}
+                {item.date ? new Date(item.date).toLocaleDateString() : "No Date Provided"}
               </TimelineOppositeContent>
               <TimelineSeparator>
                 <TimelineConnector />
@@ -35,13 +36,14 @@ const TimeLine = ({ timelines = [] }) => {
                 <Typography variant='h6'>{item.title}</Typography>
                 <Typography>{item.description}</Typography>
               </TimelineContent>
-
             </TimelineItem>
           ))
-        }
+        ) : (
+          <Typography>No Timeline Data Available</Typography>
+        )}
       </Timeline>
     </div>
-  )
-}
+  );
+};
 
-export default TimeLine
+export default TimeLine;

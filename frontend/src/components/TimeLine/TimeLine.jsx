@@ -13,7 +13,7 @@ const TimeLine = ({ timelines = [] }) => {
   return (
     <div>
       <Timeline position='alternate'>
-        {
+        {timelines.length > 0 ? (
           timelines.map((item, index) => (
             <TimelineItem key={index}>
               <TimelineOppositeContent
@@ -22,7 +22,7 @@ const TimeLine = ({ timelines = [] }) => {
                 variant='body2'
                 color="text.secondary"
               >
-                {/* Null checking for date */}
+                {/* Handle null dates with proper check */}
                 {item.date ? new Date(item.date).toLocaleDateString() : "No Date Provided"}
               </TimelineOppositeContent>
               <TimelineSeparator>
@@ -38,10 +38,12 @@ const TimeLine = ({ timelines = [] }) => {
               </TimelineContent>
             </TimelineItem>
           ))
-        }
+        ) : (
+          <Typography>No Timeline Data Available</Typography>
+        )}
       </Timeline>
     </div>
-  )
-}
+  );
+};
 
 export default TimeLine;
